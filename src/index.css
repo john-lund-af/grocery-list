@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --color-fill: #FF6F61;
+    --color-base: #FF6F61;
+    --color-secondary: #F5F5F5;
     --color-text-base: #333333;
     --color-text-inverted: #ffffff;
     --color-text-accent: #FFB6C1;

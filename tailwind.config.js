@@ -16,7 +16,8 @@ export default {
       },
       backgroundColor: {
         skin: {
-          fill: 'var(--color-fill)',
+          fill: 'var(--color-base)',
+          secondary: 'var(--color-secondary)',
           'button-accent': 'var(--color-text-accent)'
         }
       }
