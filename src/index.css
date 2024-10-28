@@ -8,7 +8,7 @@
     --color-secondary: #F5F5F5;
     --color-text-base: #333333;
     --color-text-inverted: #ffffff;
-    --color-text-accent: #FFB6C1;
-    --color-text-action: #FFD700;
+    --color-accent: #FFB6C1;
+    --color-action: #FFD700;
   }
 }

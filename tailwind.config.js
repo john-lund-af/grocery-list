@@ -18,7 +18,8 @@ export default {
         skin: {
           fill: 'var(--color-base)',
           secondary: 'var(--color-secondary)',
-          'button-accent': 'var(--color-text-accent)'
+          'button-accent': 'var(--color-accent)',
+          'button-action': 'var(--color-action)'
         }
       }
     },
