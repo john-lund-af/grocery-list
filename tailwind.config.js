@@ -10,8 +10,8 @@ export default {
         skin: {
           base: 'var(--color-text-base)',
           inverted: 'var(--color-text-inverted)',
-          accent: 'var(--color-text-accent)',
-          action: 'var(--color-text-action)'
+          accent: 'var(--color-base)',
+          action: 'var(--color-action)'
         }
       },
       backgroundColor: {
