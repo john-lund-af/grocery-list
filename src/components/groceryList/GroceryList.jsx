@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import GroceryItem from '../groceryItem/GroceryItem';
 
-const GroceryList = ({groceryItems}) => {
+const GroceryList = ({groceries}) => {
   return (
-    <ul>
-      {groceryItems.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
+    <ul className='relative top-44 z-0'>
+      {groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
     </ul>
   )
 }
 
 GroceryList.propTypes = {
-  groceryItems: PropTypes.arrayOf(PropTypes.object)
+  groceries: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default GroceryList
