@@ -6,6 +6,11 @@ function reducer(state, action) {
   switch(action.type){
     case 'GROCERIES_LOADED':
       return {...state, loading: false, groceries: action.groceries, error: null};
+    case 'GROCERY_ADDED':
+      {
+        const groceries = [...state.groceries, action.groceryToAdd];
+        return {...state, groceries};
+      }
     case 'SET_LOADING_STATUS':
       return {...state, loading: true, error: null};
     case 'CURRENT_GROCERY':
