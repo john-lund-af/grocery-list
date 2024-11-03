@@ -8,11 +8,8 @@ function reducer(state, action) {
       return {...state, loading: false, groceries: action.groceries, error: null};
     case 'SET_LOADING_STATUS':
       return {...state, loading: true, error: null};
-    case 'UPDATE_GROCERY':
-    { 
-      const groceriesUpdated = state.groceries.map(grocery => grocery.id === action.grocery.id ? action.grocery : grocery)
-      return {...state, groceries: groceriesUpdated, error: null}; 
-    };
+    case 'CURRENT_GROCERY':
+        return {...state, currentGrocery: action.currentGrocery};
     case 'SET_ERROR':
       return {...state, error: action.error, loading: false}
     default:
@@ -22,6 +19,7 @@ function reducer(state, action) {
 
 const initialState = {
   groceries: [],
+  currentGrocery: '',
   loading: false,
   error: null
 }
