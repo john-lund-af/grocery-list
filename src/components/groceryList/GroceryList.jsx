@@ -4,6 +4,7 @@ import Error from '../error/Error';
 import {useContext, useEffect} from 'react';
 import GroceryContext from '../../context/GroceryContext';
 import axios from 'axios';
+import FloatingActionButton from '../floatingActionButton/FloatingActionButton';
 
 const GroceryList = () => {
   const {state, dispatch} = useContext(GroceryContext);
@@ -29,9 +30,13 @@ const GroceryList = () => {
     return <h2 className='relative top-44 text-lg'>Loading....</h2>
 
   return (
+      <>
     <ul className='relative top-44 pb-20 z-0'>
       {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
     </ul>
+      <FloatingActionButton />
+      </>
+
   )
 }
 
