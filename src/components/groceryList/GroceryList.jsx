@@ -54,7 +54,7 @@ const GroceryList = () => {
     <ul className='relative top-44 pb-20 z-0'>
       {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
     </ul>
-      <FloatingActionButton handleClick={addGrocery} />
+      {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
       </>
 
   )
