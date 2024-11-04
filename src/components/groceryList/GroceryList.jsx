@@ -43,6 +43,16 @@ const GroceryList = () => {
     }
   }
 
+  async function removeGrocery(groceryId) {
+    try {
+      await axios.delete(`${apiUri}/${groceryId}`);
+      dispatch({type: 'GROCERY_REMOVED', groceryId});
+    } catch(err){
+      dispatch({type: 'SET_ERROR', error: err});
+      console.log(`Error: ${err.name} ${err.message}`);
+    }
+  }
+
   if(state.error)
     return <Error error={state.error} />
 
@@ -51,12 +61,11 @@ const GroceryList = () => {
 
   return (
       <>
-    <ul className='relative top-44 pb-20 z-0'>
-      {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
-    </ul>
-      {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
+        <ul className='relative top-44 pb-20 z-0'>
+          {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} handleRemove={removeGrocery} />)}
+        </ul>
+          {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
       </>
-
   )
 }
 
