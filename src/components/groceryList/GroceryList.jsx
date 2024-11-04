@@ -7,14 +7,13 @@ import axios from 'axios';
 import FloatingActionButton from '../floatingActionButton/FloatingActionButton';
 
 const GroceryList = () => {
-  const {state, dispatch} = useContext(GroceryContext);
-  const apiUri = 'http://localhost:3001/groceries';
+  const {state, dispatch, URI} = useContext(GroceryContext);
 
   useEffect(() => {
     async function getAsyncData() {
       try{
         dispatch({type: 'SET_LOADING_STATUS'})
-        const result = await axios.get(apiUri);
+        const result = await axios.get(URI);
         dispatch({type: 'GROCERIES_LOADED', groceries: result.data});
       } catch(err){
         dispatch({type: 'SET_ERROR', error: err});
@@ -22,7 +21,7 @@ const GroceryList = () => {
       }
     }
     getAsyncData();
-  }, [dispatch])
+  }, [dispatch, URI])
 
   async function addGrocery() {
     if(!state.currentGrocery)
@@ -34,7 +33,7 @@ const GroceryList = () => {
         name: state.currentGrocery,
         ready: false,
       }
-      await axios.post(apiUri, groceryToAdd);
+      await axios.post(URI, groceryToAdd);
       dispatch({type: 'GROCERY_ADDED', groceryToAdd})
       dispatch({type: 'CURRENT_GROCERY', currentGrocery: ''});
     } catch(err) {
@@ -43,15 +42,6 @@ const GroceryList = () => {
     }
   }
 
-  async function removeGrocery(groceryId) {
-    try {
-      await axios.delete(`${apiUri}/${groceryId}`);
-      dispatch({type: 'GROCERY_REMOVED', groceryId});
-    } catch(err){
-      dispatch({type: 'SET_ERROR', error: err});
-      console.log(`Error: ${err.name} ${err.message}`);
-    }
-  }
 
   if(state.error)
     return <Error error={state.error} />
@@ -62,7 +52,7 @@ const GroceryList = () => {
   return (
       <>
         <ul className='relative top-44 pb-20 z-0'>
-          {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} handleRemove={removeGrocery} />)}
+          {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
         </ul>
           {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
       </>

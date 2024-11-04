@@ -32,10 +32,12 @@ const initialState = {
   error: null
 }
 
+const URI = 'http://localhost:3001/groceries'
+
 const GroceryContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return <GroceryContext.Provider value={{state, dispatch}}>{children}</GroceryContext.Provider>
+  return <GroceryContext.Provider value={{state, dispatch, URI}}>{children}</GroceryContext.Provider>
 }
 
 GroceryContextProvider.propTypes = {
