@@ -8,7 +8,7 @@ const GroceryItem = ({grocery, handleRemove}) => {
       <span className="text-gray-400">{grocery.name}</span>
       <span>
         <span className='mr-2'><FontAwesomeIcon className="text-skin-accent" icon={faPenToSquare} /></span>
-        <span onClick={() => handleRemove(grocery.id)}><FontAwesomeIcon className="text-red-900" icon={faTrashCan} /></span>
+        <span onClick={() => handleRemove(grocery.id)}><FontAwesomeIcon className="hover:text-red-900 text-red-600 hover:cursor-pointer active:text-green-600" icon={faTrashCan} /></span>
       </span>
     </li>
   )
