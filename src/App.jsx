@@ -10,7 +10,7 @@ function App() {
     <GroceryContextProvider>
       <div className="dark">
         <main className="bg-skin-secondary dark:bg-skin-dark-secondary">
-          <Header>Grocery<br/>List</Header>
+          <Header />
           <GroceryList />
           <Footer />
         </main>

@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 
-const Header = ({children}) => {
+const Header = () => {
   return (
-    <header className="fixed w-full bg-skin-fill z-50 dark:bg-skin-dark-fill">
-      <div className='text-skin-inverted dark:text-skin-dark-base text-center text-5xl py-6'>{children}
+    <header className="fixed flex flex-row justify-between items-center w-full px-4 py-6 bg-skin-fill z-50 dark:bg-skin-dark-fill text-skin-inverted dark:text-skin-dark-base">
+      <div className='text-5xl'>Groceries</div>
+      <div>
+        <span><FontAwesomeIcon icon={faMoon} size="xl" /></span>
+        <span><FontAwesomeIcon icon={faSun} size="xl" /></span>
       </div>
     </header>
   )
-}
-
-Header.propTypes = {
-  children: PropTypes.node.isRequired
 }
 
 export default Header
