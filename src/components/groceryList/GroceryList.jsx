@@ -47,11 +47,11 @@ const GroceryList = () => {
     return <Error error={state.error} />
 
   if(state.loading)
-    return <h2 className='relative top-44 text-lg'>Loading....</h2>
+    return <h2 className='relative top-28 text-lg'>Loading....</h2>
 
   return (
       <>
-        <ul className='relative top-44 pt-6 pb-28 h-full z-0 dark:bg-skin-dark-secondary'>
+        <ul className='relative top-28 pt-6 pb-28 h-full z-0 dark:bg-skin-dark-secondary'>
           {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
         </ul>
           {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
