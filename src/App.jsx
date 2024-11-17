@@ -8,9 +8,13 @@ function App() {
 
   return (
     <GroceryContextProvider>
-      <Header>Grocery<br/>List</Header>
-      <GroceryList />
-      <Footer />
+      <div className="dark">
+        <main className="bg-skin-secondary dark:bg-skin-dark-secondary">
+          <Header>Grocery<br/>List</Header>
+          <GroceryList />
+          <Footer />
+        </main>
+      </div>
     </GroceryContextProvider>
   )
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const FloatingActionButton = ({handleClick}) => {
   return (
     <button onClick={handleClick} className="fixed bottom-24 right-4 shadow-lg w-16 h-16 rounded-full bg-skin-fill text-skin-inverted">
-      <FontAwesomeIcon className="text-white" icon={faPlus} size="lg" />
+      <FontAwesomeIcon className="text-white dark:text-skin-dark-base" icon={faPlus} size="lg" />
     </button>
   )
 }

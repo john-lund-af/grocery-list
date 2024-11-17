@@ -10,5 +10,13 @@
     --color-text-inverted: #ffffff;
     --color-accent: #FFB6C1;
     --color-action: #FFD700;
+  
+    --color-dark-base: #FF8075;
+    --color-dark-secondary: #2A2A2A;
+    --color-dark-text-base: #E0E0E0;
+    --color-dark-text-inverted: #1A1A1A;
+    --color-dark-accent: #FF9AAA;
+    --color-dark-action: #FFE066;
+
   }
 }
