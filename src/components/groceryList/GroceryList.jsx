@@ -23,6 +23,7 @@ const GroceryList = () => {
     getAsyncData();
   }, [dispatch, URI])
 
+
   async function addGrocery() {
     if(!state.currentGrocery)
       return;
@@ -55,10 +56,12 @@ const GroceryList = () => {
   if(state.loading)
     return <h2 className='relative top-28 text-lg'>Loading....</h2>
 
+  const orderedGroceries = state.groceries.toSorted((a, b) => a.name.localeCompare(b.name)).toSorted((a, b) => a.ready - b.ready);
+
   return (
       <>
         <ul className='relative top-28 pt-6 pb-28 h-full z-0 bg-skin-secondary dark:bg-skin-dark-secondary'>
-          {state.groceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
+          {orderedGroceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
         </ul>
           {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
       </>
