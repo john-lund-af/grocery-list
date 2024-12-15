@@ -18,6 +18,10 @@ function reducer(state, action) {
       const groceries = state.groceries.map(grocery => grocery.id === action.updatedGrocery.id ? action.updatedGrocery : grocery);
       return {...state, groceries};
     }
+    case 'GROCERY_TOGGLE_READY': {
+      const groceries = state.groceries.map(grocery => grocery.id === action.groceryId ? {...grocery, ready: !grocery.ready} : grocery);
+      return {...state, groceries};
+    }
     case 'SET_LOADING_STATUS':
       return {...state, loading: true, error: null};
     case 'CURRENT_GROCERY':

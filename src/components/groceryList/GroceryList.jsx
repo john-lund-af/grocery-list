@@ -27,6 +27,12 @@ const GroceryList = () => {
     if(!state.currentGrocery)
       return;
 
+    const alreadyExists = state.groceries.find(grocery => grocery.name.toLowerCase() === state.currentGrocery.toLowerCase());
+    if(alreadyExists){
+      dispatch({type: 'CURRENT_GROCERY', currentGrocery: ''});
+      return;
+    }
+
     try{
       const groceryToAdd = {
         id: crypto.randomUUID(),

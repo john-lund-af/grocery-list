@@ -42,9 +42,19 @@ const GroceryItem = ({grocery}) => {
     }
   }
 
+  async function toggleReady() {
+    try{
+      await axios.patch(`${URI}/${grocery.id}`, {ready: !grocery.ready});
+      dispatch({type: 'GROCERY_TOGGLE_READY', groceryId: grocery.id})
+    } catch(err) {
+      dispatch({type: 'SET_ERROR', error: err});
+      console.log(`Error: ${err.name} ${err.message}`);
+    }
+  }
+
   return (
     <li className="bg-white mb-4 mx-2 py-4 px-4 shadow-md text-lg rounded-lg flex justify-between dark:bg-gray-600 dark:text-skin-dark-base">
-      {!editMode ? <span className="text-gray-400">{grocery.name}</span> :
+      {!editMode ? <span onClick={toggleReady} className={`${grocery.ready ? 'line-through ' : ''} text-gray-400 cursor-pointer`} >{grocery.name}</span> :
       <span><input ref={inputRef} className="bg-gray-100 text-green-600" value={groceryName} onChange={(e) => setGroceryName(e.target.value)} type="text" name={grocery.id} id={grocery.id} /></span>}
       <span>
         <span onClick={() => editMode ? handleEdit() : setEditMode(true)} className='mr-2'><FontAwesomeIcon className={editMode ? 'text-skin-action' : 'text-skin-accent'} icon={faPenToSquare} /></span>
