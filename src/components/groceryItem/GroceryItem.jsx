@@ -45,7 +45,8 @@ const GroceryItem = ({grocery}) => {
   async function toggleReady() {
     try{
       await axios.patch(`${URI}/${grocery.id}`, {ready: !grocery.ready});
-      dispatch({type: 'GROCERY_TOGGLE_READY', groceryId: grocery.id})
+      dispatch({type: 'GROCERY_TOGGLE_READY', groceryId: grocery.id});
+      dispatch({type: 'CURRENT_GROCERY', currentGrocery: ''});
     } catch(err) {
       dispatch({type: 'SET_ERROR', error: err});
       console.log(`Error: ${err.name} ${err.message}`);
