@@ -20,6 +20,7 @@ const GroceryItem = ({grocery}) => {
     try {
       await axios.delete(`${URI}/${grocery.id}`);
       dispatch({type: 'GROCERY_REMOVED', groceryId: grocery.id});
+      dispatch({type: 'CURRENT_GROCERY', currentGrocery: ''});
     } catch(err){
       dispatch({type: 'SET_ERROR', error: err});
       console.log(`Error: ${err.name} ${err.message}`);
