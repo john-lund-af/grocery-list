@@ -57,11 +57,12 @@ const GroceryList = () => {
     return <h2 className='relative top-28 text-lg'>Loading....</h2>
 
   const orderedGroceries = state.groceries.toSorted((a, b) => a.name.localeCompare(b.name)).toSorted((a, b) => a.ready - b.ready);
+  const orderedAndFilteredGroceries = state.currentGrocery ? state.groceries.filter(grocery => grocery.name.toLowerCase().includes(state.currentGrocery.toLowerCase())) : orderedGroceries;
 
   return (
       <>
         <ul className='relative top-28 pt-6 pb-28 h-full z-0 bg-skin-secondary dark:bg-skin-dark-secondary'>
-          {orderedGroceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
+          {orderedAndFilteredGroceries.map(grocery => <GroceryItem key={grocery.id} grocery={grocery} />)}
         </ul>
           {state.currentGrocery && <FloatingActionButton handleClick={addGrocery} />}
       </>
