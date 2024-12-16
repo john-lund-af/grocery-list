@@ -34,7 +34,8 @@ const GroceryItem = ({grocery}) => {
     try{
       await axios.patch(`${URI}/${grocery.id}`, {name: groceryName});
       const updatedGrocery = {...grocery, name: groceryName}
-      dispatch({type: 'GROCERY_EDITED', updatedGrocery})
+      dispatch({type: 'GROCERY_EDITED', updatedGrocery});
+      dispatch({type: 'CURRENT_GROCERY', currentGrocery: ''});
     }catch(err){
       dispatch({type: 'SET_ERROR', error: err});
       console.log(`Error: ${err.name} ${err.message}`);
